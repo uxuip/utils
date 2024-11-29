@@ -15,8 +15,9 @@ export function slash(str: string) {
  * @category String
  */
 export function ensurePrefix(prefix: string, str: string) {
-  if (!str.startsWith(prefix))
+  if (!str.startsWith(prefix)) {
     return prefix + str
+  }
   return str
 }
 
@@ -26,8 +27,9 @@ export function ensurePrefix(prefix: string, str: string) {
  * @category String
  */
 export function ensureSuffix(suffix: string, str: string) {
-  if (!str.endsWith(suffix))
+  if (!str.endsWith(suffix)) {
     return str + suffix
+  }
   return str
 }
 
@@ -67,13 +69,14 @@ export function template(str: string, ...args: any[]): string {
 
   if (isObject(firstArg)) {
     const vars = firstArg as Record<string, any>
-    return str.replace(/{([\w\d]+)}/g, (_, key) => vars[key] || ((typeof fallback === 'function' ? fallback(key) : fallback) ?? key))
+    return str.replace(/\{(\w+)\}/g, (_, key) => vars[key] || ((typeof fallback === 'function' ? fallback(key) : fallback) ?? key))
   }
   else {
-    return str.replace(/{(\d+)}/g, (_, key) => {
+    return str.replace(/\{(\d+)\}/g, (_, key) => {
       const index = Number(key)
-      if (Number.isNaN(index))
+      if (Number.isNaN(index)) {
         return key
+      }
       return args[index]
     })
   }
@@ -90,8 +93,9 @@ export function randomStr(size = 16, dict = urlAlphabet) {
   let id = ''
   let i = size
   const len = dict.length
-  while (i--)
+  while (i--) {
     id += dict[(Math.random() * len) | 0]
+  }
   return id
 }
 
@@ -127,18 +131,21 @@ export function unindent(str: TemplateStringsArray | string) {
 
   const commonIndent = lines
     .reduce((min, line, idx) => {
-      if (whitespaceLines[idx])
+      if (whitespaceLines[idx]) {
         return min
+      }
       const indent = line.match(/^\s*/)?.[0].length
       return indent === undefined ? min : Math.min(min, indent)
     }, Number.POSITIVE_INFINITY)
 
   let emptyLinesHead = 0
-  while (emptyLinesHead < lines.length && whitespaceLines[emptyLinesHead])
+  while (emptyLinesHead < lines.length && whitespaceLines[emptyLinesHead]) {
     emptyLinesHead++
+  }
   let emptyLinesTail = 0
-  while (emptyLinesTail < lines.length && whitespaceLines[lines.length - emptyLinesTail - 1])
+  while (emptyLinesTail < lines.length && whitespaceLines[lines.length - emptyLinesTail - 1]) {
     emptyLinesTail++
+  }
 
   return lines
     .slice(emptyLinesHead, lines.length - emptyLinesTail)

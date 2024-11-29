@@ -45,8 +45,9 @@ class PInstance<T = any> extends Promise<Awaited<T>[]> {
       Array.from(this.items)
         .map(async (i, idx) => {
           const v = await i
-          if ((v as any) === VOID)
+          if ((v as any) === VOID) {
             return VOID as unknown as U
+          }
           return fn(v, idx)
         }),
       this.options,
@@ -59,8 +60,9 @@ class PInstance<T = any> extends Promise<Awaited<T>[]> {
         .map(async (i, idx) => {
           const v = await i
           const r = await fn(v, idx)
-          if (!r)
+          if (!r) {
             return VOID as unknown as T
+          }
           return v
         }),
       this.options,
@@ -81,10 +83,12 @@ class PInstance<T = any> extends Promise<Awaited<T>[]> {
 
   then(fn?: () => PromiseLike<any>) {
     const p = this.promise
-    if (fn)
+    if (fn) {
       return p.then(fn)
-    else
+    }
+    else {
       return p
+    }
   }
 
   catch(fn?: (err: unknown) => PromiseLike<any>) {
@@ -99,11 +103,11 @@ class PInstance<T = any> extends Promise<Awaited<T>[]> {
 /**
  * Utility for managing multiple promises.
  *
- * @see https://github.com/antfu/utils/tree/main/docs/p.md
+ * @see https://github.com/uxuip/utils/tree/main/docs/p.md
  * @category Promise
  * @example
  * ```
- * import { p } from '@antfu/utils'
+ * import { p } from '@uxuip/utils'
  *
  * const items = [1, 2, 3, 4, 5]
  *

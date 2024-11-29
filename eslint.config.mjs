@@ -1,6 +1,6 @@
-import antfu from '@antfu/eslint-config'
+import uxuip from '@uxuip/eslint-config'
 
-export default antfu({
+export default uxuip({
   typescript: {
     overrides: {
       'ts/ban-ts-comment': 'off',
