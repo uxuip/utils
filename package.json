@@ -36,7 +36,8 @@
     "lint": "eslint .",
     "lint-fix": "npm run lint --fix",
     "prepublishOnly": "npm run build",
-    "release": "bumpp --commit --push --tag && npm publish",
+    "bump": "bumpp --commit --no-push --tag",
+    "release": "npm publish",
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
