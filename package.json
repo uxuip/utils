@@ -2,7 +2,7 @@
   "name": "@uxuip/utils",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.14.3",
   "description": "Opinionated collection of common JavaScript / TypeScript utils",
   "author": "uxuip <uxuip@outlook.com>",
   "license": "MIT",
@@ -21,45 +21,35 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.js"
     }
   },
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "dev": "npm run build --watch",
+    "dev": "unbuild --stub",
+    "build": "unbuild",
     "lint": "eslint .",
     "lint-fix": "npm run lint --fix",
-    "prepublishOnly": "npm run build",
     "bump": "bumpp --commit --no-push --tag",
-    "release": "npm publish",
-    "start": "esno src/index.ts",
+    "release": "npm publish --access public",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
   },
   "devDependencies": {
-    "@rollup/plugin-alias": "^5.1.0",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/node": "^20.12.10",
     "@types/throttle-debounce": "^5.0.2",
     "@uxuip/eslint-config": "3.0.6-beta.1",
-    "bumpp": "^9.4.1",
+    "bumpp": "^9.8.1",
     "eslint": "^9.15.0",
-    "esno": "^4.7.0",
     "p-limit": "^5.0.0",
-    "rollup": "^4.17.2",
-    "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-esbuild": "^6.1.1",
     "throttle-debounce": "5.0.0",
     "typescript": "^5.4.5",
-    "vite": "^5.2.11",
-    "vitest": "^1.6.0"
+    "unbuild": "^2.0.0",
+    "vitest": "^2.1.6"
   }
 }
