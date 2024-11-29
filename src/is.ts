@@ -11,7 +11,5 @@ export const isNull = (val: any): val is null => toString(val) === '[object Null
 export const isRegExp = (val: any): val is RegExp => toString(val) === '[object RegExp]'
 export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
 
-// @ts-expect-error
 export const isWindow = (val: any): boolean => typeof window !== 'undefined' && toString(val) === '[object Window]'
-// @ts-expect-error
-export const isBrowser = typeof window !== 'undefined'
+export const inBrowser = typeof window !== 'undefined' && typeof document !== 'undefined'
