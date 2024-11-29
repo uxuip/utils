@@ -38,7 +38,8 @@
     "bump": "bumpp --commit --no-push --tag",
     "release": "npm publish --access public",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@types/node": "^20.12.10",
