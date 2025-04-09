@@ -1,0 +1,58 @@
+{
+  "name": "@uxuip/utils",
+  "type": "module",
+  "version": "0.2.1",
+  "packageManager": "pnpm@10.8.0",
+  "description": "Opinionated collection of common JavaScript / TypeScript utils",
+  "author": "uxuip <uxuip@outlook.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/uxuip/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxuip/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uxuip/utils/issues"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "lint": "eslint .",
+    "lint-fix": "npm run lint --fix",
+    "bump": "bumpp --commit --no-push --tag",
+    "release": "npm publish --access public",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "prepare": "vitest --run && npm run build"
+  },
+  "dependencies": {
+    "@antfu/utils": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@uxuip/eslint-config": "^4.0.0",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.24.0",
+    "happy-dom": "^17.4.4",
+    "typescript": "^5.8.3",
+    "unbuild": "^3.5.0",
+    "vitest": "^3.1.1"
+  }
+}
