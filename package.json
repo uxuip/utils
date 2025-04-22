@@ -40,7 +40,7 @@
     "release": "npm publish --access public",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "prepare": "vitest --run && npm run build"
+    "prepare": "npm run typecheck && vitest --run && npm run build"
   },
   "dependencies": {
     "@antfu/utils": "^9.2.0"
